@@ -32,9 +32,19 @@
                 <a href="{% url 'login' %}"> Login </a>
             {% endif %}
     </div>
+    {% if messages %}
+    <div id="messages">
+        <ul class="messages">
+            {% for messages in messages %}
+                <li class="{{messages.tags}}">
+                    {{messages|safe}}
+                </li>
+                <a href="#" class="close">X</a>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <div id="content">
-        {% block content %}
-        {% endblock %}
+        {% block content %}{% endblock %}
     </div>
 </body>
 </html>
